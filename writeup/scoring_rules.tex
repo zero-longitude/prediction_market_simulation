@@ -1,0 +1,77 @@
+\documentclass[11pt, a4paper]{article}
+
+% --- Core Packages (The "Lite" Essentials) ---
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry} % Clean 1-inch margins
+\usepackage{amsmath, amssymb, amsthm} % Essential math tools
+\usepackage{listings} % For code snippets
+\usepackage{xcolor} % For code syntax highlighting
+\usepackage{hyperref} % Interactive links/URLs
+\usepackage{graphicx} % To insert project diagrams/plots
+
+% --- Define Theorem/Definition Environments ---
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{openproblem}{Open Problem}[section]
+
+
+% --- Minimalist Code Style Setup ---
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=4
+}
+
+% --- Document Metadata ---
+\title{\textbf{Prediction Market Mechanisms} \\ \large Theory and C++}
+\author{Kavi Mookherjee Amodt}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\pagebreak
+
+% =========================================================================
+\section{Introduction}
+% =========================================================================
+Eventually, I want these notes to be the distilled map of what I have learned in researching prediciton markets. The notes are ordered as I explored these topics. Here are the two objectives of the document: 
+\begin{itemize}
+    \item \textbf{Goal 1:} Build a compressed, intuitive representation of the mathematics behind prediction markets. 
+    \item \textbf{Goal 2:} Use C++ to learn via implementation. 
+\end{itemize}
+
+% =========================================================================
+\section{Mathematical Framework}
+% =========================================================================
+A prediction market is a mechanism that generates a price. Specifically, it generates a probability that an event occurs, and a bettor can buy into that event occurring at a price corresponding to the probability. Let's take an event, Stephen Miller saying the word ``iron" in his next press conference. Our mechanism generates the probability .3 of that happening—a bettor can buy one share of that for 30 cents. If he says ``iron," they get a dollar back; if not, they walk away 30 cents poorer. But real world events are messy and many-dimensional—how might you systematically generate a price for an event occurring?
+
+\subsection{The Efficient Market Hypothesis (EMH)}
+The root of the problem
+
+\begin{itemize}
+    \item \textbf{Strong EMH:} The price of an item determined by all the information that the pubic knows about it, as well as all the information that private entities (like insiders) know about it. Even if you have inside information, you can't systematically beat the market because \textit{the information you know is reflected in the price.}
+    \item \textbf{Semi-strong EMH:} The price of an item is determined \textit{only by public information.} Public information like news, 
+\end{itemize}
+
+
+\end{document}
