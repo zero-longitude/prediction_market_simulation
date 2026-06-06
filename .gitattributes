@@ -1,0 +1,7 @@
+# Treat all LaTeX files as documentation (hides them from language stats)
+*.tex linguist-documentation
+*.sty linguist-documentation
+*.cls linguist-documentation
+
+# Hide the Makefile from language stats
+Makefile linguist-vendored

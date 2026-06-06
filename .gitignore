@@ -12,3 +12,15 @@
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Ignore the entire build directory (where CMake outputs everything)
+build/
+Build/
+bin/
+
+# Ignore specific CMake files if they happen to spawn in the root
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+Makefile
