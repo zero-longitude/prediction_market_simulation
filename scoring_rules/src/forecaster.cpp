@@ -5,7 +5,7 @@
 Three traders (forecasters)
     1) Static: [NAIVE] does not update belief_ (which is a protected class variable of Forecaster)
     2) Bayesian: totals 1's (alpha) and 0's (beta) and updates belief := alpha / (alpha + beta)
-         ⟹ alpha, beta are priors 
+         ⟹ alpha and beta are priors 
     3) MLEForecaster: [NAIVE] a point estimator; computes ratio ones / total 
         ⟹ no priors
 */
