@@ -1,5 +1,6 @@
 #include "forecaster.h"
 #include <algorithm>
+#include <sstream>
 
 /* 
 Three traders (forecasters)
@@ -20,6 +21,9 @@ std::string Forecaster::name() const { return name_; }
 StaticForecaster::StaticForecaster(std::string name, double belief)
     : Forecaster(name, belief) {}
 
+StaticForecaster::StaticForecaster(double belief)
+    : Forecaster(static_name(belief), belief) {}
+
 void StaticForecaster::update(int outcome) {}
 
 
@@ -28,7 +32,11 @@ void StaticForecaster::update(int outcome) {}
     // β = number of 0's at time step t
     // bayesian forecaster ⟶ E[θ | α, β ] = α / (α + β)
 BayesianForecaster::BayesianForecaster(std::string name, double alpha, double beta)
-    : Forecaster(name, alpha / (alpha + beta)), 
+    : Forecaster(name, alpha / (alpha + beta)),
+    alpha_(alpha), beta_(beta) {}
+
+BayesianForecaster::BayesianForecaster(double alpha, double beta)
+    : Forecaster(bayes_name(alpha, beta), alpha / (alpha + beta)),
     alpha_(alpha), beta_(beta) {}
 
 void BayesianForecaster::update(int outcome) {
@@ -43,6 +51,9 @@ void BayesianForecaster::update(int outcome) {
 // MLE forecaster
 MLEForecaster::MLEForecaster(std::string name)
     : Forecaster(name, 0.5), ones_(0), total_(0) {}
+
+MLEForecaster::MLEForecaster()
+    : Forecaster("MLE", 0.5), ones_(0), total_(0) {}
 
 void MLEForecaster::update(int outcome) {
     total_ += 1;

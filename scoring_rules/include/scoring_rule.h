@@ -12,9 +12,6 @@ class ScoringRule {
         // instantiate it directly. You can only create child classes which inherit from it
         virtual double score(double p, int outcome) const = 0;
         virtual ~ScoringRule() = default; // declares a destructor function
-
-    protected: // only child classes can use this
-        void validate(double p) const;
 };
 
 

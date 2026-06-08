@@ -1,9 +1,10 @@
+#include "config.h"
 #include "forecaster.h"
 #include "scoring_rule.h"
-#include <vector> 
-#include <memory> 
+#include <vector>
+#include <memory>
 #include <random>
-#include <iostream> 
+#include <iostream>
 #include <fstream>
 
 /* 
@@ -14,24 +15,20 @@ They are scored accoring to Brier and negated log scores.
 
 */
 int main() {
-    // real underlying probability
-    const double THETA = .5;
-
-    // random number generation
-    std::mt19937 rng(42);
+    // generate random coin
+    std::mt19937 rng(RNG_SEED);
     std::bernoulli_distribution coin(THETA);
 
     // scoring rules 
     BrierScore brier;
     LogScore log_score;
 
-    std::vector<std::unique_ptr<Forecaster>> forecasters; 
-    forecasters.push_back(std::make_unique<StaticForecaster>("Static(0.5)", .5));
-    forecasters.push_back(std::make_unique<BayesianForecaster>("Bayes(1,1)", 1, 1));
-    forecasters.push_back(std::make_unique<MLEForecaster>("MLE"));
+    std::vector<std::unique_ptr<Forecaster>> forecasters;
+    forecasters.push_back(std::make_unique<StaticForecaster>(STATIC_BELIEF));
+    forecasters.push_back(std::make_unique<BayesianForecaster>(BAYES_ALPHA, BAYES_BETA));
+    forecasters.push_back(std::make_unique<MLEForecaster>());
 
-    // simulation
-    int n = 1000;
+    const int n = N_TRIALS;
 
     // create a vector of doubles called cumulative_brier, set size to size of forecasters, initialize all values as 0
     std::vector<double> cumulative_brier(forecasters.size(), 0.0);
@@ -70,14 +67,14 @@ int main() {
     }
     csv.close();
 
-    for (int i = 0; i < forecasters.size(); i++) {
+    for (int i = 0; i < (int)forecasters.size(); i++) {
         std::cout << "n = "
                   << n << "\n"
                   << forecasters[i]->name()
                   << " total Brier: "
                   << cumulative_brier[i] << "\n"
                   << forecasters[i]->name()
-                  << " total negated log score: "
-                  << -cumulative_log[i] << "\n";
+                  << " total log score: "
+                  << cumulative_log[i] << "\n";
     }
 }

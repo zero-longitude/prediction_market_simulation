@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <sstream>
 
 // public = code inside or outside can access 
 // private = only class; not eve subclasses
@@ -19,28 +20,44 @@ class Forecaster {
 
 
 class StaticForecaster : public Forecaster {
-    public: 
+    public:
         StaticForecaster(std::string name, double belief);
-            void update(int outcome) override;
+        explicit StaticForecaster(double belief);
+        void update(int outcome) override;
 };
 
 
 class BayesianForecaster : public Forecaster {
-    public: 
+    public:
         BayesianForecaster(std::string name, double alpha, double beta);
+        BayesianForecaster(double alpha, double beta);
         void update(int outcome) override;
 
-    private: // nothing outside bayesian forecaster needs to know about alpha and beta
-        double alpha_; 
-        double beta_; 
+    private:
+        double alpha_;
+        double beta_;
 };
 
 class MLEForecaster : public Forecaster {
     public:
         MLEForecaster(std::string name);
-        void update(int outcome) override; 
+        MLEForecaster();
+        void update(int outcome) override;
 
-    private: 
+    private:
         int ones_;
         int total_;
 };
+
+// helpers to build display names from parameters
+inline std::string static_name(double belief) {
+    std::ostringstream s;
+    s << "Static(" << belief << ")";
+    return s.str();
+}
+
+inline std::string bayes_name(double alpha, double beta) {
+    std::ostringstream s;
+    s << "Bayes(" << alpha << "," << beta << ")";
+    return s.str();
+}
