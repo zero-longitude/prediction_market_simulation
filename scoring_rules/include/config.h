@@ -11,3 +11,6 @@ constexpr double STATIC_BELIEF   = 0.5;
 // BayesianForecaster Beta prior
 constexpr double BAYES_ALPHA     = 1.0;
 constexpr double BAYES_BETA      = 1.0;
+
+// Calibration tracker
+constexpr int NUM_BINS = 10; 
