@@ -61,17 +61,56 @@ Eventually, I want these notes to be the distilled map of what I have learned in
 \end{itemize}
 
 % =========================================================================
-\section{Mathematical Framework}
+\section{Mathematical Setup: Scoring Rules and Forecasters}
 % =========================================================================
-A prediction market is a mechanism that generates a price. Specifically, it generates a probability that an event occurs, and a bettor can buy into that event occurring at a price corresponding to the probability. Let's take an event, Stephen Miller saying the word ``iron" in his next press conference. Our mechanism generates the probability .3 of that happening—a bettor can buy one share of that for 30 cents. If he says ``iron," they get a dollar back; if not, they walk away 30 cents poorer. But real world events are messy and many-dimensional—how might you systematically generate a price for an event occurring?
+A prediction market is a mechanism that generates a price. Specifically, 
+it generates a probability that an event occurs. Let's take 
+an event, Stephen Miller saying the word ``iron" in his next press conference. 
+Our mechanism generates the probability .3 of that happening—a bettor can buy 
+one share of that \textbf{future} for 30 cents. If he says ``iron," they get a dollar back; if not, 
+they walk away 30 cents poorer. But real world events are messy and many-dimensional—how 
+might you systematically generate a price for an event occurring?
 
 \subsection{The Efficient Market Hypothesis (EMH)}
-The root of the problem
+FINISH THIS
 
 \begin{itemize}
     \item \textbf{Strong EMH:} The price of an item determined by all the information that the pubic knows about it, as well as all the information that private entities (like insiders) know about it. Even if you have inside information, you can't systematically beat the market because \textit{the information you know is reflected in the price.}
     \item \textbf{Semi-strong EMH:} The price of an item is determined \textit{only by public information.} Public information like news, 
 \end{itemize}
 
+
+\subsection{Scoring Rules}
+
+
+\subsection{Online Machine Learning Connection: Cross Entropy and KL Divergence}
+
+\subsection{A General Scoring Rule Template}
+
+
+\subsection{Forecasters}
+
+% =========================================================================
+\section{Making it a Market}
+% =========================================================================
+\subsection{Market Scoring Rules}
+\subsection{LMSR Cost Function}
+\subsection{No-Regret Learing Equivalence}
+
+% =========================================================================
+\section{Information Aggregation}
+% =========================================================================
+\subsection{Rational Expectations Equilibrium}
+
+\subsection{Grossman-Stiglitz Paradox}
+
+\subsection{Calibration}
+
+\subsection{Brier Decomposition}
+
+
+% =========================================================================
+\section{Implementation}
+% =========================================================================
 
 \end{document}
