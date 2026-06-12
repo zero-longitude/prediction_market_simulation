@@ -3,7 +3,7 @@
 // Simulation parameters
 constexpr int    N_TRIALS        = 1000;
 constexpr int    RNG_SEED        = 42;
-constexpr double THETA           = 0.5;
+constexpr double THETA           = 0.3;
 
 // StaticForecaster prior
 constexpr double STATIC_BELIEF   = 0.5;

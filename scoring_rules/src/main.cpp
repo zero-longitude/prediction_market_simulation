@@ -27,6 +27,7 @@ int main() {
     std::vector<std::unique_ptr<Forecaster>> forecasters;
     forecasters.push_back(std::make_unique<StaticForecaster>(STATIC_BELIEF));
     forecasters.push_back(std::make_unique<BayesianForecaster>(BAYES_ALPHA, BAYES_BETA));
+    forecasters.push_back(std::make_unique<BayesianForecaster>(9.0, 1.0));
     forecasters.push_back(std::make_unique<MLEForecaster>());
 
     const int n = N_TRIALS;

@@ -5,7 +5,7 @@ df = pd.read_csv("build/results.csv")
 cal = pd.read_csv("build/calibration.csv")
 print(df.columns.tolist())
 
-forecasters = ["Static(0.5)", "Bayes(1,1)", "MLE"]
+forecasters = ["Static(0.5)", "Bayes(1,1)", "Bayes(9,1)", "MLE"]
 
 fig, axes = plt.subplots(3, 1, figsize=(12, 10), sharex=True)
 
